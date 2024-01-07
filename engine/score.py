@@ -1,7 +1,9 @@
 """ Score logic """
 import logging
 
-from common import config, actions, obstacles
+import config
+import actions
+import obstacles
 
 log = logging.getLogger("score")
 
