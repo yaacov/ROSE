@@ -1,16 +1,11 @@
 import argparse
 import asyncio
-import os
 import logging
 
 from engine import server
 
 
 def main():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    default_public_path = os.path.join(script_directory, "web")
-    default_theme_path = os.path.join(script_directory, "res")
-
     parser = argparse.ArgumentParser(description="Start the game engine.")
     parser.add_argument(
         "-p", "--port", type=int, default=8880, help="Port for HTTP server"
@@ -31,11 +26,6 @@ def main():
         "--running",
         action="store_true",
         help="Whether the game engine should start running immediately",
-    )
-    parser.add_argument(
-        "--public",
-        default=default_public_path,
-        help="Path to the directory with static public files. If not provided, defaults to <current_directory>/public.",
     )
     parser.add_argument(
         "-t",
@@ -60,8 +50,6 @@ def main():
             args.initial_rate,
             args.running,
             args.drivers,
-            args.public,
-            default_theme_path,
             args.track,
         )
     )
