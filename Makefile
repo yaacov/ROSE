@@ -42,5 +42,6 @@ run-image:
 clean:
 	-rm -rf .coverage
 	-rm -rf htmlcov
+	-rm -rf .pytest_cache
 	-find . -name '*.pyc' -exec rm {} \;
 	-find . -name '__pycache__' -exec rmdir {} \;

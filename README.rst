@@ -1,10 +1,10 @@
-=======================
-ROSE Engine Game Server
-=======================
+=====================
+ROSE Game Engine Game
+=====================
 
 Overview
 ========
-This server provides a simple HTTP endpoint for a driving game.
+This server provides a simple HTTP endpoint for a driving game engine API.
 
 Requirements
 ============
@@ -27,13 +27,13 @@ Installation
       pip install -r requirements.txt
       pip install -r requirements-dev.txt
 
-Running the Server
-==================
+Running the game engine API Server
+==================================
 Run the server using:
 
 .. code-block:: bash
 
-   python main.py --port 8080
+   python engine/main.py --port 8080
 
 By default, the server will start on port 8080.
 
@@ -43,13 +43,13 @@ Podman Usage
 
    .. code-block:: bash
 
-      podman build -t rose-engine .
+      podman build -t rose-game-engine .
 
 2. Run the container:
 
    .. code-block:: bash
 
-      podman run -it --rm --network host rose-engine
+      podman run -it --rm --network host rose-game-engine
 
 Kubernetes Deployment
 =====================
@@ -62,21 +62,21 @@ Instructions:
 
 .. code-block:: bash
 
-   kubectl apply -f rose-engine.yaml
+   kubectl apply -f rose-game-engine.yaml
 
 2. Check the status of the deployment:
 
 .. code-block:: bash
 
-   kubectl get deployments rose-engine
+   kubectl get deployments rose-game-engine
 
 3. Forward a local port to your pod for accessing the service locally:
 
 .. code-block:: bash
 
-   kubectl port-forward deployment/rose-engine-deployment 8880:8880
+   kubectl port-forward deployment/rose-game-engine 8880:8880
 
-Now, the service will be accessible locally at http://localhost:8880.
+Now, the game engine API service will be accessible locally at http://localhost:8880.
 
 Note: For production deployments, consider exposing the service using an Ingress controller or cloud provider specific solutions.
 
