@@ -1,15 +1,15 @@
 import actions
 import config
-import player
+from player import Player
 
 
 def test_player_initialization():
-    player1 = player.Player("John", 1, 1)
+    player1 = Player("John", 1, 1)
 
     assert player1.name == "John"
     assert player1.car == 1
     assert player1.lane == 1
-    # player.Player x value should be middle of it's lane
+    # Player x value should be middle of it's lane
     assert player1.x == player1.lane * config.cells_per_player + 1
     assert player1.y == config.matrix_height // 3 * 2
     assert player1.action == actions.NONE
@@ -18,7 +18,7 @@ def test_player_initialization():
 
 
 def test_player_reset():
-    player1 = player.Player("John", 1, 1)
+    player1 = Player("John", 1, 1)
 
     player1.score = 50  # Modify player to make sure reset works
     player1.reset()
@@ -30,7 +30,7 @@ def test_player_reset():
 
 
 def test_player_in_lane():
-    player1 = player.Player("John", 1, 1)
+    player1 = Player("John", 1, 1)
 
     lane_start = player1.lane * config.cells_per_player
 
@@ -40,7 +40,7 @@ def test_player_in_lane():
 
 
 def test_player_not_in_lane():
-    player1 = player.Player("John", 1, 1)
+    player1 = Player("John", 1, 1)
 
     # Modify player's position to be out of their lane
     other_lane = (player1.lane + 1) % config.max_players
@@ -52,8 +52,8 @@ def test_player_not_in_lane():
 
 
 def test_player_comparison():
-    player1 = player.Player("John", 1, 1)
-    player2 = player.Player("Doe", 2, 2)
+    player1 = Player("John", 1, 1)
+    player2 = Player("Doe", 2, 2)
 
     # Initial scores are the same
     assert not player1 < player2
@@ -67,7 +67,7 @@ def test_player_comparison():
 
 
 def test_player_state():
-    player1 = player.Player("John", 2, 1)
+    player1 = Player("John", 2, 1)
 
     expected_state = {
         "name": "John",

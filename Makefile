@@ -29,7 +29,7 @@ test:
 
 run:
 	@echo "Running driver logic server ..."
-	python main.py --port $(PORT) --drivers $(DRIVERS)
+	python engine/main.py --port $(PORT) --drivers $(DRIVERS)
 
 build-image:
 	@echo "Building container image ..."
