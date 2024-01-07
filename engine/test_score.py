@@ -1,7 +1,7 @@
-from common import actions, config, obstacles
-from game import track
-from game import player
-from game import score
+import actions, config, obstacles
+import track
+import player
+import score
 import pytest
 
 

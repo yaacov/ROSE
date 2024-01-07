@@ -1,5 +1,5 @@
-from common import actions, config
-from game import player
+import actions, config
+import player
 
 
 def test_player_initialization():
