@@ -1,4 +1,5 @@
-import config, actions
+import config
+import actions
 
 
 class Player(object):

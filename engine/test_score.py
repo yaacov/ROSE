@@ -1,4 +1,6 @@
-import actions, config, obstacles
+import actions
+import config
+import obstacles
 import track
 import player
 import score

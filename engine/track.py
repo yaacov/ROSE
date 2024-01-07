@@ -1,6 +1,7 @@
 import random
 
-import config, obstacles
+import config
+import obstacles
 
 
 class Track(object):

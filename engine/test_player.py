@@ -1,4 +1,5 @@
-import actions, config
+import actions
+import config
 import player
 
 
