@@ -1,4 +1,4 @@
-from common import config, actions
+import config, actions
 
 
 class Player(object):

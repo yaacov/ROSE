@@ -1,6 +1,6 @@
 .PHONY: lint test lint-fix code-quality run build-image run-image clean
 
-IMAGE_NAME ?= quay.io/rose/rose-server
+IMAGE_NAME ?= quay.io/rose/rose-game-engine
 PORT ?= 8880
 
 # Default driver when running on localhost

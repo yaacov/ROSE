@@ -4,8 +4,8 @@ import os
 import aiohttp
 from aiohttp import web
 
-from common import config
-from game import logic
+import config
+import logic
 
 # Global active_websockets
 # IMPORTANT - shared with game loop in game.py
@@ -95,8 +95,6 @@ async def run(
     initial_rate,
     initial_running,
     initial_drivers,
-    public,
-    theme,
     track_type,
 ):
     """
@@ -123,18 +121,9 @@ async def run(
 
     app = web.Application()
 
-    # Add static files server using the 'public' arg
-    async def index_handler(request):
-        return web.FileResponse(os.path.join(public, "index.html"))
-
     # Add application routes
-    app.router.add_get("/", index_handler)
     app.router.add_get("/ws", websocket_handler)
     app.router.add_post("/admin", admin_handler)
-
-    # Add public static routes
-    app.router.add_static("/res/", path=theme, name="theme")
-    app.router.add_static("/", path=public, name="static")
 
     runner = aiohttp.web.AppRunner(app)
     await runner.setup()
@@ -143,7 +132,6 @@ async def run(
     # Start HTTP server
     await site.start()
 
-    print(f"Theme         {theme}")
     print(f"Track         {track_type}")
     print(f"Drivers       {initial_drivers}")
     print(f"Listen        {listen_address}:{http_port}")

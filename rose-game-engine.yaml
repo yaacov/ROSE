@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rose-game-engine
+  labels:
+    app: rose-game-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rose-game-engine
+  template:
+    metadata:
+      labels:
+        app: rose-game-engine
+    spec:
+      containers:
+      - name: rose-game-engine
+        image: quay.io/rose/rose-game-engine:latest  # Modify with your Docker image name and tag.
+        ports:
+        - containerPort: 8880
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rose-game-engine
+spec:
+  selector:
+    app: rose-game-engine
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8880
+      targetPort: 8880
+  type: LoadBalancer  # run outside the cluster: kubectl port-forward service/rose-game-engine-service 8880:8880 .

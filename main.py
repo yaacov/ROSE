@@ -3,7 +3,7 @@ import asyncio
 import os
 import logging
 
-from game import server
+from engine import server
 
 
 def main():
